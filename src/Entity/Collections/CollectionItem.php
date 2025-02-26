@@ -85,8 +85,6 @@ class CollectionItem
      * @var Template
      *
      * @ORM\Column(type="integer", nullable=true)
-     *
-     * @deprecated
      */
     private $template;
 
