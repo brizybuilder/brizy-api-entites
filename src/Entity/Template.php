@@ -25,21 +25,12 @@ class Template
     use CreatedAtTrait;
 
     /**
-     * @GraphQLType("String!")
-     *
      * @ORM\Column(type="string", length=120, nullable=false)
-     *
-     * @Assert\NotBlank()
-     * @Assert\Length(min="1", max="120")
-     * @Gedmo\Versioned
      */
     protected $title;
 
     /**
-     * @var string
      * @ORM\Column(name="data", type="text", nullable=false)
-     * @Assert\NotNull()
-     * @Gedmo\Versioned
      */
     private $data = '{}';
 
@@ -48,9 +39,6 @@ class Template
      *
      * @ORM\ManyToOne(targetEntity=CollectionType::class, inversedBy="templates")
      * @ORM\JoinColumn(onDelete="CASCADE")
-     *
-     * @Assert\NotNull()
-     * @Assert\Type(CollectionType::class)
      */
     private $type;
 

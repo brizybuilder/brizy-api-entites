@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity;
 
 
+use Brizy\Bundle\ApiEntitiesBundle\Constants\CustomerConst;
 use Brizy\Bundle\ApiEntitiesBundle\Repository\CustomerRepository;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\CodeInjectionPropertyTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\CreatedAtTrait;
@@ -43,15 +44,6 @@ class Customer
      * @var string
      *
      * @ORM\Column(type="string", length=100)
-     *
-     * @Assert\Length(max="100")
-     * @Assert\NotNull
-     * @Assert\Email
-     *
-     * @Groups({ WebhookConst::ENTITY_MESSAGE_GROUP })
-     * @Groups({ WebhookConst::ENTITY_MESSAGE_GROUP })
-     *
-     * @Gedmo\Versioned
      */
     private $email;
 
@@ -59,12 +51,6 @@ class Customer
      * @var string
      *
      * @ORM\Column(type="string", length=50, nullable=true)
-     *
-     * @Assert\Length(max="50")
-     *
-     * @Groups({ WebhookConst::ENTITY_MESSAGE_GROUP })
-     *
-     * @Gedmo\Versioned
      */
     private $firstName;
 
@@ -72,25 +58,12 @@ class Customer
      * @var string
      *
      * @ORM\Column(type="string", length=50, nullable=true)
-     *
-     * @Assert\Length(max="50")
-     *
-     * @Groups({ WebhookConst::ENTITY_MESSAGE_GROUP })
-     *
-     * @Gedmo\Versioned
      */
     private $lastName;
 
     /**
      * @var string
-     *
      * @ORM\Column(type="string", length=20, nullable=true)
-     *
-     * @Assert\Length (max="20")
-     *
-     * @Groups({ WebhookConst::ENTITY_MESSAGE_GROUP })
-     *
-     * @Gedmo\Versioned
      */
     private $phone;
 
@@ -98,10 +71,6 @@ class Customer
      * @var bool
      *
      * @ORM\Column(type="boolean")
-     *
-     * @Groups({ WebhookConst::ENTITY_MESSAGE_GROUP })
-     *
-     * @Gedmo\Versioned
      */
     private $verifiedEmail = false;
 
@@ -109,12 +78,6 @@ class Customer
      * @var string
      *
      * @ORM\Column(type="string", length=10)
-     *
-     * @Assert\Choice(choices=CustomerConst::STATE_STATUSES)
-     *
-     * @Groups({ WebhookConst::ENTITY_MESSAGE_GROUP })
-     *
-     * @Gedmo\Versioned
      */
     private $state = CustomerConst::STATE_ENABLED;
 
@@ -122,8 +85,6 @@ class Customer
      * @var string
      *
      * @ORM\Column(type="string", length=100, nullable=true)
-     *
-     * @Gedmo\Versioned
      */
     private $activationToken;
 
@@ -147,9 +108,6 @@ class Customer
      *      joinColumns={@ORM\JoinColumn(name="customer_id", referencedColumnName="id", onDelete="CASCADE")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="customer_groups_id", referencedColumnName="id")}
      * )
-     * @AppAssert\UniqueCustomerGroups(fields={"id"}, message="Field id must be unique", groups={"Default", "Update"})
-     *
-     * @Groups({ WebhookConst::ENTITY_MESSAGE_GROUP })
      */
     private $customerGroups;
 
@@ -157,8 +115,6 @@ class Customer
      * @var bool
      *
      * @ORM\Column(type="boolean", nullable=false, options={"default":false})
-     *
-     * @Gedmo\Versioned
      */
     private $sendEmailInvite = self::SEND_EMAIL_INVITE_DEFAULT;
 
@@ -168,7 +124,6 @@ class Customer
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Length(min="6", max="255")
      */
     private $password;
 
@@ -206,8 +161,6 @@ class Customer
      *
      * @ORM\OneToOne(targetEntity=CompiledScripts::class, cascade={"persist", "remove"}, fetch="LAZY")
      * @ORM\JoinColumn(nullable=true, referencedColumnName="id", onDelete="SET NULL")
-     *
-     * @Gedmo\Versioned
      */
     private $compiledScripts;
 
@@ -216,8 +169,6 @@ class Customer
      *
      * @ORM\OneToOne(targetEntity=CompiledStyles::class, cascade={"persist", "remove"}, fetch="LAZY")
      * @ORM\JoinColumn(nullable=true, referencedColumnName="id", onDelete="SET NULL")
-     *
-     * @Gedmo\Versioned
      */
     private $compiledStyles;
 

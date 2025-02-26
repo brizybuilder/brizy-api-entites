@@ -4,15 +4,7 @@ declare(strict_types=1);
 
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity\Collections;
 
-use ApiPlatform\Core\Action\NotFoundAction;
-use ApiPlatform\Core\Annotation\ApiProperty;
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Annotation\GraphQLType;
-use App\Constants\ElasticConst;
-use App\Constants\GraphQLConst;
-use App\Constants\WebhookConst;
-use App\Resolver\CollectionItemField\CollectionItemFieldBySlugResolver;
-use App\Validator as AppAssert;
+
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits as CommonTraits;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -22,16 +14,6 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
 
 /**
  * @ORM\Entity(repositoryClass="Brizy\Bundle\ApiEntitiesBundle\Repository\Collections\CollectionItemFieldRepository", readOnly=true)
- * @ORM\Table(
- *      uniqueConstraints={
- *           @UniqueConstraint(columns={"item_id", "type_id"}),
- *           @UniqueConstraint(columns={"project_id", "type_id", "id"}),
- *           @UniqueConstraint(columns={"project_id", "item_id", "type_id"})
- *      },
- *      indexes={
- *           @Index(columns={"project_id", "item_id"}),
- *      }
- *  )
  */
 class CollectionItemField
 {
@@ -46,13 +28,13 @@ class CollectionItemField
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Collections\CollectionItem", inversedBy="fields")
+     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionItem", inversedBy="fields")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     protected $item;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Collections\CollectionTypeField", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionTypeField", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     protected $type;
@@ -64,13 +46,13 @@ class CollectionItemField
     protected $values = [];
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Collections\CollectionItem")
+     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionItem")
      * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     protected $reference;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Collections\CollectionItem")
+     * @ORM\ManyToMany(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionItem")
      * @ORM\JoinTable(name="collection_item_field_multi_reference")
      */
     protected $multiReference;

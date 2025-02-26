@@ -7,7 +7,6 @@ namespace Brizy\Bundle\ApiEntitiesBundle\Entity;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\IdTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\ProjectTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**

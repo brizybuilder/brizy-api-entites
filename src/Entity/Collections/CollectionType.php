@@ -4,47 +4,16 @@ declare(strict_types=1);
 
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity\Collections;
 
-use ApiPlatform\Core\Action\NotFoundAction;
-use ApiPlatform\Core\Annotation\ApiResource;
-use App\Annotation\GenerateSlug;
-use App\Annotation\GraphQLType;
-use App\Constants\ElasticConst;
-use App\Constants\GraphQLConst;
-use App\Constants\WebhookConst;
-use App\Dto\CollectionType\CreateCollectionTypeInput;
-use App\Dto\CollectionType\UpdateCollectionTypeInput;
-use App\Resolver\CollectionType\CollectionTypeBySlugResolver;
-use App\Resolver\CollectionType\CollectionTypeCollectionResolver;
-use App\Resolver\CollectionType\CollectionTypeCreateMutationResolver;
-use App\Resolver\CollectionType\CollectionTypeResolver;
-use App\Resolver\CollectionType\CollectionTypeUpdateMutationResolver;
-use App\Type\GraphQL\Definition\CollectionTypeSettingsType;
-use App\Validator as AppAssert;
+
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits as CommonTraits;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\Index;
-use Doctrine\ORM\Mapping\UniqueConstraint;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  *
  * @ORM\Entity(repositoryClass="Brizy\Bundle\ApiEntitiesBundle\Repository\Collections\CollectionTypeRepository", readOnly=true)
- * @ORM\Table(
- *     uniqueConstraints={
- *          @UniqueConstraint(columns={"project_id", "id"}),
- *          @UniqueConstraint(columns={"project_id", "title"}),
- *          @UniqueConstraint(columns={"project_id", "slug"}),
- *     },
- *     indexes={
- *          @Index(columns={"project_id", "priority"}),
- *     }
- * )
- * @UniqueEntity(fields={"project", "title"}, errorPath="title")
- * @UniqueEntity(fields={"project", "slug"}, errorPath="slug")
  */
 class CollectionType
 {
@@ -85,24 +54,19 @@ class CollectionType
     protected $editor;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Collections\CollectionCategory")
+     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionCategory")
      * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      *
-     * @Assert\Expression(
-     *     "!value or !this.getProject() or value.getProject().getId() == this.getProject().getId()",
-     *     message="Invalid category project"
-     * )
      */
     protected $category;
 
     /**
      * @ORM\OneToMany(
-     *     targetEntity="App\Entity\Collections\CollectionTypeField",
+     *     targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionTypeField",
      *     mappedBy="collectionType",
      *     cascade={"persist", "remove"},
      *     fetch="EAGER"
      * )
-     * @ORM\OrderBy({"priority": "DESC"})
      */
     protected $fields;
 
@@ -114,7 +78,7 @@ class CollectionType
     /**
      * @var Collection
      *
-     * @ORM\OneToMany(targetEntity="App\Entity\Template", mappedBy="type")
+     * @ORM\OneToMany(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Template", mappedBy="type")
      */
     private $templates;
 
@@ -226,7 +190,7 @@ class CollectionType
 
         /*
          * Must be nonNull
-         * @see \App\Type\GraphQL\Definition\CollectionTypeSettingsType::getSettingsFields
+         * @see \Brizy\Bundle\ApiEntitiesBundle\Type\GraphQL\Definition\CollectionTypeSettingsType::getSettingsFields
          */
         $settings[CollectionTypeSettingsType::FIELD_HIDDEN] = (bool) ($settings[CollectionTypeSettingsType::FIELD_HIDDEN] ?? false);
 
