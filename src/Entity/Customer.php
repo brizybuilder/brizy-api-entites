@@ -6,7 +6,6 @@ namespace Brizy\Bundle\ApiEntitiesBundle\Entity;
 
 
 use Brizy\Bundle\ApiEntitiesBundle\Repository\CustomerRepository;
-use Brizy\Bundle\ApiEntitiesBundle\Utils\Random;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\CodeInjectionPropertyTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\CreatedAtTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\DependenciesTrait;
@@ -224,7 +223,6 @@ class Customer
 
     public function __construct()
     {
-        $this->activationToken = Random::generateToken();
         $this->customerGroups = new ArrayCollection();
         $this->pageData = new PageData();
         $this->compiledScripts = new CompiledScripts();
