@@ -32,7 +32,7 @@ final class BrizyApiEntitiesBundle extends Bundle
         $namespaces = ['Brizy\Bundle\ApiEntitiesBundle\Entity'];
         $directories = [realpath(__DIR__.'/Entity')];
         $managerParameters = [BrizyApiEntitiesBundleExtension::DOCTRINE_MANAGER];
-        $aliasMap = ['BrizyApiEntitiesBundle' => 'Brizy\Bundle\ApiEntitiesBundle\Entity'];
+        $aliasMap = ['BrizyApiEntitiesBundle' => 'Brizy\Bundle\ApiEntitiesBundle'];
 
         $container->addCompilerPass(
             DoctrineOrmMappingsPass::createAnnotationMappingDriver(

@@ -13,12 +13,12 @@ trait CodeInjectionPropertyTrait
      */
     private $codeInjection = [];
 
-    public function getCodeInjection(): ?array
+    public function getCodeInjection()
     {
         return $this->codeInjection;
     }
 
-    public function setCodeInjection(?array $codeInjection): self
+    public function setCodeInjection(array $codeInjection): self
     {
         $this->codeInjection = $codeInjection;
 

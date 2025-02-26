@@ -18,7 +18,7 @@ trait SettingsTrait
         return $this->settings ?: [];
     }
 
-    public function setSettings(?array $settings = []): self
+    public function setSettings(array $settings = []): self
     {
         $this->settings = $settings;
 

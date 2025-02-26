@@ -20,7 +20,7 @@ trait SocialTrait
         return $this->social ?? [];
     }
 
-    public function setSocial(?array $social): self
+    public function setSocial(array $social): self
     {
         $this->social = $social ?? [];
 

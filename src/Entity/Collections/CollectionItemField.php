@@ -124,7 +124,7 @@ class CollectionItemField
         return $this->values ?: [];
     }
 
-    public function setValues(?array $values = []): self
+    public function setValues(array $values = []): self
     {
         $this->values = $values;
 

@@ -128,17 +128,17 @@ class CollectionType
     /**
      * @ORM\Column(type="boolean", nullable=false, options={"default":CollectionType::PUBLIC_DEFAULT_VALUE})
      */
-    private bool $public = self::PUBLIC_DEFAULT_VALUE;
+    private  $public = self::PUBLIC_DEFAULT_VALUE;
 
     /**
      * @ORM\Column(type="boolean", nullable=false, options={"default":CollectionType::PUBLIC_DEFAULT_VALUE})
      */
-    private bool $showUI = self::SHOW_UI_DEFAULT_VALUE;
+    private  $showUI = self::SHOW_UI_DEFAULT_VALUE;
 
     /**
      * @ORM\Column(type="boolean", nullable=false, options={"default":CollectionType::PUBLIC_DEFAULT_VALUE})
      */
-    private bool $showInMenu = self::SHOW_IN_MENU_DEFAULT_VALUE;
+    private  $showInMenu = self::SHOW_IN_MENU_DEFAULT_VALUE;
 
     /**
      * CollectionType constructor.

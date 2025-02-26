@@ -20,7 +20,7 @@ trait SEOTrait
         return $this->seo ?? [];
     }
 
-    public function setSeo(?array $seo): self
+    public function setSeo(array $seo): self
     {
         $this->seo = $seo ?? [];
 
