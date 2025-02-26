@@ -54,7 +54,6 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  *          @Index(columns={"project_id", "type_id", "title"}),
  *     }
  * )
- * @Gedmo\Loggable(logEntryClass="Brizy\Bundle\ApiEntitiesBundle\Revisions\Entity\RevisionLog")
  */
 class CollectionItem
 {

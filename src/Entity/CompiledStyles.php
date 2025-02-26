@@ -11,7 +11,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
- * @ORM\Entity(repositoryClass="Brizy\Bundle\ApiEntitiesBundle\Repository\CompiledStylesRepository")
+ * @ORM\Entity(repositoryClass="Brizy\Bundle\ApiEntitiesBundle\Repository\CompiledStylesRepository", readOnly=true)
  */
 class CompiledStyles
 {

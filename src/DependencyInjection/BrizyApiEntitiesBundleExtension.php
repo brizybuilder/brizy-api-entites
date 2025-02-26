@@ -24,10 +24,14 @@ class BrizyApiEntitiesBundleExtension extends Extension
 
     public function load(array $configs, ContainerBuilder $container)
     {
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
 
         $config = $this->processConfiguration(new Configuration(), $configs);
+
+        if (isset($config['persistence']['doctrine']['entity_manager']['name'])) {
+            $container->setParameter(self::DOCTRINE_MANAGER, $config['persistence']['doctrine']['entity_manager']['name']);
+        }
     }
 
 }

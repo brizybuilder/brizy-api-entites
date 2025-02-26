@@ -10,7 +10,7 @@ use Brizy\Bundle\ApiEntitiesBundle\Repository\PageDataRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PageDataRepository::class)
+ * @ORM\Entity(repositoryClass=PageDataRepository::class, readOnly=true)
  */
 class PageData
 {

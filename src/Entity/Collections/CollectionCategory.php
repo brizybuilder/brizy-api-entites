@@ -11,12 +11,6 @@ use Doctrine\ORM\Mapping\Index;
 
 /**
  * @ORM\Entity(repositoryClass="Brizy\Bundle\ApiEntitiesBundle\Repository\Collections\CollectionCategoryRepository", readOnly=true)
- * @ORM\Table(
- *     uniqueConstraints={},
- *     indexes={
- *          @Index(columns={"project_id", "priority"}),
- *     }
- * )
  */
 class CollectionCategory
 {

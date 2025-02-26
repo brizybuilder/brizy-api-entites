@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
- * @ORM\Entity(repositoryClass="Brizy\Bundle\ApiEntitiesBundle\Repository\CompiledHtmlRepository")
+ * @ORM\Entity(repositoryClass="Brizy\Bundle\ApiEntitiesBundle\Repository\CompiledHtmlRepository", readOnly=true)
  */
 class CompiledHtml
 {
