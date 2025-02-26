@@ -13,7 +13,7 @@ trait SocialTrait
     /**
      * @ORM\Column(type="json", nullable=true)
      */
-    protected array $social = [];
+    protected $social = [];
 
     public function getSocial(): array
     {
