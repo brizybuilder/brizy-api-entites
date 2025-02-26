@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Brizy\Bundle\ApiEntitiesBundle\Repository\Collections;
 
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionCategory;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,10 +14,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method CollectionCategory[]    findAll()
  * @method CollectionCategory[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CollectionCategoryRepository extends ServiceEntityRepository
+class CollectionCategoryRepository extends EntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, CollectionCategory::class);
-    }
+
 }

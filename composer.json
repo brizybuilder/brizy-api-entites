@@ -27,6 +27,12 @@
       "/Tests/"
     ]
   },
+  "extra": {
+    "symfony": {
+      "allow-contrib": false,
+      "require": "^3.4"
+    }
+  },
   "autoload-dev": {
     "psr-4": {
       "Brizy\\Bundle\\ApiEntitiesBundle\\Tests\\": "tests/"

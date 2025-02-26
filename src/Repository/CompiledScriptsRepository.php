@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Brizy\Bundle\ApiEntitiesBundle\Repository;
 
 use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledScripts;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -13,10 +14,5 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method CompiledScripts[]    findAll()
  * @method CompiledScripts[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CompiledScriptsRepository extends Common\EntityRepository
-{
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, CompiledScripts::class);
-    }
+class CompiledScriptsRepository extends EntityRepository {
 }
