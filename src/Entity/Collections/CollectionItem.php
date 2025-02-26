@@ -15,6 +15,7 @@ use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\PublishDateTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\SEOTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\SocialTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\UpdatedAtTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\Template;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -77,8 +78,6 @@ class CollectionItem
      *     cascade={"persist", "remove"},
      *     fetch="LAZY"
      * )
-     *
-     * @MaxDepth(5)
      */
     protected $fields;
 

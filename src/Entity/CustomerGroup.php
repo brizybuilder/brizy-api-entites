@@ -27,11 +27,6 @@ class CustomerGroup
 
     /**
      * @ORM\Column(type="string", length=40, nullable=false)
-     *
-     * @Assert\Length(max="40")
-     * @Assert\NotNull
-     *
-     * @Groups({ WebhookConst::ENTITY_MESSAGE_GROUP })
      */
     private $name;
 
