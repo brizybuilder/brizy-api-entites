@@ -71,9 +71,9 @@ class CollectionType
     protected $fields;
 
     /**
-     * @ORM\Column(type="json", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
-    protected $settings = [];
+    protected $settings = '';
 
     /**
      * @var Collection
@@ -192,7 +192,7 @@ class CollectionType
          * Must be nonNull
          * @see \Brizy\Bundle\ApiEntitiesBundle\Type\GraphQL\Definition\CollectionTypeSettingsType::getSettingsFields
          */
-        $settings[CollectionTypeSettingsType::FIELD_HIDDEN] = (bool) ($settings[CollectionTypeSettingsType::FIELD_HIDDEN] ?? false);
+        $settings['hidden'] = (bool) ($settings['hidden'] ?? false);
 
         return $settings;
     }

@@ -41,9 +41,9 @@ class CollectionItemField
 
     /**
      * // name="`values`" because of conflict with "INSERT ... VALUES ..." // https://stackoverflow.com/a/11278568
-     * @ORM\Column(name="`values`", type="json", nullable=true)
+     * @ORM\Column(name="`values`", type="text", nullable=true)
      */
-    protected $values = [];
+    protected $values = '';
 
     /**
      * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionItem")
@@ -103,12 +103,12 @@ class CollectionItemField
 
     public function getValues(): array
     {
-        return $this->values ?: [];
+        return json_decode($this->values) ?: [];
     }
 
     public function setValues(array $values = []): self
     {
-        $this->values = $values;
+        $this->values = json_encode($values);
 
         return $this;
     }

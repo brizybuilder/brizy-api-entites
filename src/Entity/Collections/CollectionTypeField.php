@@ -103,9 +103,9 @@ class CollectionTypeField
     protected $placement = CollectionConst::FIELD_DEFAULT_PLACEMENT;
 
     /**
-     * @ORM\Column(type="json", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
-    protected $settings = [];
+    protected $settings = '';
 
     /**
      * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionType")

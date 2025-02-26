@@ -11,13 +11,13 @@ use Doctrine\ORM\Mapping as ORM;
 trait SocialTrait
 {
     /**
-     * @ORM\Column(type="json", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
-    protected $social = [];
+    protected $social = '';
 
     public function getSocial(): array
     {
-        return $this->social ?? [];
+        return json_decode($this->social) ?? [];
     }
 
     public function setSocial(array $social): self
