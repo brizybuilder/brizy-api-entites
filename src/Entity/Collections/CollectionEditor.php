@@ -36,7 +36,7 @@ class CollectionEditor
 
     /**
      * @var CollectionType[]
-     * @ORM\OneToMany(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionType", mappedBy="editor", fetch="LAZY")
+     * @ORM\OneToMany(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionType", mappedBy="editor", fetch="LAZY")
      */
     protected $collectionTypes;
 

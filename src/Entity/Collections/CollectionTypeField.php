@@ -49,7 +49,7 @@ class CollectionTypeField
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionType", inversedBy="fields")
+     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionType", inversedBy="fields")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      *
      * @Assert\Type(CollectionType::class)
@@ -108,7 +108,7 @@ class CollectionTypeField
     protected $settings = '';
 
     /**
-     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionType")
+     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionType")
      * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
      */
     protected $reference;

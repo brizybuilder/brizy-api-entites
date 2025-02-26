@@ -28,13 +28,13 @@ class CollectionItemField
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionItem", inversedBy="fields")
+     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionItem", inversedBy="fields")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     protected $item;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionTypeField", fetch="EAGER")
+     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionTypeField", fetch="EAGER")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
     protected $type;
@@ -46,13 +46,13 @@ class CollectionItemField
     protected $values = '';
 
     /**
-     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionItem")
+     * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionItem")
      * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      */
     protected $reference;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Brizy\Bundle\ApiEntitiesBundle\RepositoryEntity\Collections\CollectionItem")
+     * @ORM\ManyToMany(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionItem")
      * @ORM\JoinTable(name="collection_item_field_multi_reference")
      */
     protected $multiReference;
