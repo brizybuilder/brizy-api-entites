@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits;
 
-use Brizy\Bundle\ApiEntitiesBundle\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 
 trait AuthorTrait

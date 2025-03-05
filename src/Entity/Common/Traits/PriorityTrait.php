@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits;
 
-use App\Annotation\GraphQLType;
 use Doctrine\ORM\Mapping as ORM;
 
 trait PriorityTrait
