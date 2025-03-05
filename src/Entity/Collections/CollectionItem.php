@@ -4,42 +4,11 @@ declare(strict_types=1);
 
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity\Collections;
 
-use ApiPlatform\Core\Action\NotFoundAction;
-use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Annotation\ApiResource;
-use Brizy\Bundle\ApiEntitiesBundle\Annotation\GenerateSlug;
-use Brizy\Bundle\ApiEntitiesBundle\Annotation\GenerateTitle;
-use Brizy\Bundle\ApiEntitiesBundle\Constants\CollectionConst;
-use Brizy\Bundle\ApiEntitiesBundle\Constants\ElasticConst;
-use Brizy\Bundle\ApiEntitiesBundle\DataSource\Elastic\CollectionItem\CollectionItemCollectionDataProvider as SearchProvider;
-use Brizy\Bundle\ApiEntitiesBundle\Dto\CollectionItem\CollectionItemOutput;
-use Brizy\Bundle\ApiEntitiesBundle\Dto\CollectionItem\CreateCollectionItemInput;
-use Brizy\Bundle\ApiEntitiesBundle\Dto\CollectionItem\UpdateCollectionItemInput;
-use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits as CommonTraits;
-use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledHtml;
-use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledScripts;
-use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledStyles;
-use Brizy\Bundle\ApiEntitiesBundle\Entity\PageData;
-use Brizy\Bundle\ApiEntitiesBundle\Entity\Template;
-use Brizy\Bundle\ApiEntitiesBundle\Filter\GraphQL\CollectionItemsFilter;
-use Brizy\Bundle\ApiEntitiesBundle\Filter\GraphQL\CollectionItemsOrderFilter;
-use Brizy\Bundle\ApiEntitiesBundle\Filter\GraphQL\CollectionTypeFilter;
-use Brizy\Bundle\ApiEntitiesBundle\Filter\GraphQL\OffsetFilter;
-use Brizy\Bundle\ApiEntitiesBundle\Filter\GraphQL\ReferencedCollectionItemsFilter;
-use Brizy\Bundle\ApiEntitiesBundle\Repository\Collections\CollectionItemRepository;
-use Brizy\Bundle\ApiEntitiesBundle\Resolver\CollectionItem\CollectionItemBySlugResolver;
-use Brizy\Bundle\ApiEntitiesBundle\Resolver\CommonCollectionResolver;
-use Brizy\Bundle\ApiEntitiesBundle\Resolver\CommonCreateMutationResolver;
-use Brizy\Bundle\ApiEntitiesBundle\Resolver\CommonItemResolver;
-use Brizy\Bundle\ApiEntitiesBundle\Resolver\CommonUpdateMutationResolver;
-use Brizy\Bundle\ApiEntitiesBundle\Type\Elastic\Definition\Entity\CollectionItemSearchQuery;
-use Brizy\Bundle\ApiEntitiesBundle\Validator as AppAssert;
+
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\Index;
-use Doctrine\ORM\Mapping\UniqueConstraint;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\MaxDepth;
 

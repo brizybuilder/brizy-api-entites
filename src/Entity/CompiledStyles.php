@@ -9,7 +9,6 @@ use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\ProjectTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Repository\CompiledScriptsRepository;
 use Brizy\Bundle\ApiEntitiesBundle\Repository\CompiledStylesRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
  #[ORM\Entity(repositoryClass: CompiledStylesRepository::class)]

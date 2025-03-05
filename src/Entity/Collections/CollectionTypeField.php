@@ -9,14 +9,9 @@ use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits as CommonTraits;
 use Brizy\Bundle\ApiEntitiesBundle\Repository\Collections\CollectionTypeFieldRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\Index;
-use Doctrine\ORM\Mapping\UniqueConstraint;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 #[ORM\Entity(repositoryClass: CollectionTypeFieldRepository::class)]
-
-#[UniqueEntity(fields: ["collectionType", "slug"], errorPath: "slug")]
 class CollectionTypeField
 {
     use CommonTraits\IdTrait;

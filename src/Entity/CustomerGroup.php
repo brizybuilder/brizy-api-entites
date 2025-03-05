@@ -12,8 +12,9 @@ use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\UpdatedAtTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Repository\CustomerGroupRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: CustomerGroupRepository::class)]
+#[ORM\ORM\Entity(repositoryClass: CustomerGroupRepository::class)]
 class CustomerGroup
 {
     use IdTrait;

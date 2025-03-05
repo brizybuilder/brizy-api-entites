@@ -8,7 +8,6 @@ namespace Brizy\Bundle\ApiEntitiesBundle\Entity\Collections;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits as CommonTraits;
 use Brizy\Bundle\ApiEntitiesBundle\Repository\Collections\CollectionCategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\Index;
 
 #[ORM\Entity(repositoryClass: CollectionCategoryRepository::class, readOnly: true)]
 class CollectionCategory
