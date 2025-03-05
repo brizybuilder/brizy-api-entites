@@ -7,6 +7,7 @@ namespace Brizy\Bundle\ApiEntitiesBundle\Entity;
 
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionType;
 use Brizy\Bundle\ApiEntitiesBundle\Repository\TemplateRepository;
+use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TemplateRepository::class)]
 class Template
