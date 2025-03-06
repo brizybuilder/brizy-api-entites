@@ -5,26 +5,41 @@ declare(strict_types=1);
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity\Collections;
 
 
+use Brizy\Bundle\ApiEntitiesBundle\Constants\CollectionConst;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\AuthorTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\CodeInjectionPropertyTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\CreatedAtTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\DependenciesTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\IdTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\ProjectTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\PublishDateTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\SEOTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\SocialTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\UpdatedAtTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledHtml;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledScripts;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledStyles;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\PageData;
+use Brizy\Bundle\ApiEntitiesBundle\Repository\Collections\CollectionItemRepository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 #[ORM\Entity(repositoryClass: CollectionItemRepository::class, readOnly: true)]
 class CollectionItem
 {
-    use CommonTraits\IdTrait;
-    use CommonTraits\ProjectTrait;
-    use CommonTraits\CreatedAtTrait;
-    use CommonTraits\UpdatedAtTrait;
-    use CommonTraits\SEOTrait;
-    use CommonTraits\SocialTrait;
-    use CommonTraits\AuthorTrait;
-    use CommonTraits\PublishDateTrait;
-    use CommonTraits\CodeInjectionPropertyTrait;
-    use CommonTraits\DependenciesTrait;
+    use IdTrait;
+    use ProjectTrait;
+    use CreatedAtTrait;
+    use UpdatedAtTrait;
+    use SEOTrait;
+    use SocialTrait;
+    use AuthorTrait;
+    use PublishDateTrait;
+    use CodeInjectionPropertyTrait;
+    use DependenciesTrait;
 
     public const SEO_DEFAULT_ENABLE_INDEXING = true;
 
