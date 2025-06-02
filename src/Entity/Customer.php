@@ -88,26 +88,16 @@ class Customer
     #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?PageData $pageData;
 
-    #[ORM\OneToOne(targetEntity: CompiledHtml::class, cascade: ['persist', 'remove'], fetch: 'LAZY')]
-    #[ORM\JoinColumn(nullable: true, referencedColumnName: 'id', onDelete: 'SET NULL')]
-    private ?CompiledHtml $compiledHtml;
+    #[ORM\OneToOne(targetEntity: CompiledData::class, cascade: ["persist", "remove"], fetch: "LAZY")]
+    #[ORM\JoinColumn(nullable: true, referencedColumnName: "id", onDelete: "SET NULL")]
+    private CompiledData $compiledData;
 
-    #[ORM\OneToOne(targetEntity: CompiledScripts::class, cascade: ['persist', 'remove'], fetch: 'LAZY')]
-    #[ORM\JoinColumn(nullable: true, referencedColumnName: 'id', onDelete: 'SET NULL')]
-    private ?CompiledScripts $compiledScripts;
-
-    #[ORM\OneToOne(targetEntity: CompiledStyles::class, cascade: ['persist', 'remove'], fetch: 'LAZY')]
-    #[ORM\JoinColumn(nullable: true, referencedColumnName: 'id', onDelete: 'SET NULL')]
-    private ?CompiledStyles $compiledStyles;
 
     public function __construct()
     {
         $this->activationToken = Random::generateToken();
         $this->customerGroups = new ArrayCollection();
         $this->pageData = new PageData();
-        $this->compiledScripts = new CompiledScripts();
-        $this->compiledStyles = new CompiledStyles();
-        $this->compiledHtml = new CompiledHtml();
     }
 
 
@@ -364,6 +354,21 @@ class Customer
     public function setCompiledStyles(CompiledStyles $compiledStyles): self
     {
         $this->compiledStyles = $compiledStyles;
+
+        return $this;
+    }
+
+    public function getCompiledData(): CompiledData
+    {
+        return $this->compiledData ?? $this->compiledData = new CompiledData();
+    }
+
+    /**
+     * @return $this
+     */
+    public function setCompiledData(CompiledData $compiledData): Customer
+    {
+        $this->compiledData = $compiledData;
 
         return $this;
     }

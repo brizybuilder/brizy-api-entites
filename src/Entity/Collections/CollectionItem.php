@@ -16,6 +16,7 @@ use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\PublishDateTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\SEOTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\SocialTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\UpdatedAtTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledData;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledHtml;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledScripts;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledStyles;
@@ -76,19 +77,9 @@ class CollectionItem
     #[ORM\JoinColumn(nullable: true, referencedColumnName: "id", onDelete: "SET NULL")]
     private $pageData;
 
-    #[ORM\OneToOne(targetEntity: CompiledHtml::class, cascade: ["persist", "remove"], fetch: "LAZY")]
+    #[ORM\OneToOne(targetEntity: CompiledData::class, cascade: ["persist", "remove"], fetch: "LAZY")]
     #[ORM\JoinColumn(nullable: true, referencedColumnName: "id", onDelete: "SET NULL")]
-    #[Gedmo\Versioned]
-    private $compiledHtml;
-
-    #[ORM\OneToOne(targetEntity: CompiledScripts::class, cascade: ["persist", "remove"], fetch: "LAZY")]
-    #[ORM\JoinColumn(nullable: true, referencedColumnName: "id", onDelete: "SET NULL")]
-    private $compiledScripts;
-
-    #[ORM\OneToOne(targetEntity: CompiledStyles::class, cascade: ["persist", "remove"], fetch: "LAZY")]
-    #[ORM\JoinColumn(nullable: true, referencedColumnName: "id", onDelete: "SET NULL")]
-    #[Gedmo\Versioned]
-    private $compiledStyles;
+    private CompiledData $compiledData;
 
     #[ORM\Column(type: "boolean", options: ["default" => 0])]
     private $isHomepage = false;
@@ -105,9 +96,6 @@ class CollectionItem
         $this->fields = new ArrayCollection();
         $this->status = CollectionConst::ITEM_DEFAULT_STATUS;
         $this->pageData = new PageData();
-        $this->compiledScripts = new CompiledScripts();
-        $this->compiledStyles = new CompiledStyles();
-        $this->compiledHtml = new CompiledHtml();
     }
 
     public function getStatus(): ?string
@@ -294,6 +282,21 @@ class CollectionItem
     public function setCompiledStyles(CompiledStyles $compiledStyles): CollectionItem
     {
         $this->compiledStyles = $compiledStyles;
+
+        return $this;
+    }
+
+    public function getCompiledData(): CompiledData
+    {
+        return $this->compiledData ?? $this->compiledData = new CompiledData();
+    }
+
+    /**
+     * @return $this
+     */
+    public function setCompiledData(CompiledData $compiledData): CollectionItem
+    {
+        $this->compiledData = $compiledData;
 
         return $this;
     }
