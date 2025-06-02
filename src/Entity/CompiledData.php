@@ -7,19 +7,10 @@ namespace Brizy\Bundle\ApiEntitiesBundle\Entity;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\IdTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\ProjectTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Mapping\Annotation as Gedmo;
 use Brizy\Bundle\ApiEntitiesBundle\Repository\CompiledDataRepository;
 
-/**
- * @ORM\Entity(repositoryClass=CompiledDataRepository::class)
- * @ORM\Table(
- *     indexes={
- *         @ORM\Index(name="IDX_ttl", columns={"ttl"}),
- *         @ORM\Index(name="IDX_project_id", columns={"project_id"})
- *     }
- * )
- * @ORM\HasLifecycleCallbacks()
- */
+#[ORM\Entity(repositoryClass: CompiledDataRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class CompiledData
 {
     use IdTrait;
