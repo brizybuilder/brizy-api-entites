@@ -15,6 +15,7 @@ use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\PublishDateTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\SEOTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\SocialTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\UpdatedAtTrait;
+use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledData;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Template;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -95,26 +96,12 @@ class CollectionItem
     private $pageData;
 
     /**
-     * @ORM\OneToOne(targetEntity=CompiledHtml::class, cascade={"persist", "remove"}, fetch="LAZY")
-     * @ORM\JoinColumn(nullable=true, referencedColumnName="id", onDelete="SET NULL")
-     */
-    private $compiledHtml;
-
-    /**
-     * @var CompiledScripts
+     * @var CompiledData
      *
-     * @ORM\OneToOne(targetEntity=CompiledScripts::class, cascade={"persist", "remove"}, fetch="LAZY")
+     * @ORM\OneToOne(targetEntity=CompiledData::class, cascade={"persist", "remove"}, fetch="LAZY")
      * @ORM\JoinColumn(nullable=true, referencedColumnName="id", onDelete="SET NULL")
      */
-    private $compiledScripts;
-
-    /**
-     * @var CompiledStyles
-     *
-     * @ORM\OneToOne(targetEntity=CompiledStyles::class, cascade={"persist", "remove"}, fetch="LAZY")
-     * @ORM\JoinColumn(nullable=true, referencedColumnName="id", onDelete="SET NULL")
-     */
-    private $compiledStyles;
+    private  $compiledData;
 
     /**
      * @ORM\Column(type="boolean", options={"default":0})
@@ -137,9 +124,6 @@ class CollectionItem
         $this->fields = new ArrayCollection();
         $this->status = CollectionConst::ITEM_DEFAULT_STATUS;
         $this->pageData = new PageData();
-        $this->compiledScripts = new CompiledScripts();
-        $this->compiledStyles = new CompiledStyles();
-        $this->compiledHtml = new CompiledHtml();
     }
 
     public function getStatus(): ?string
@@ -281,51 +265,16 @@ class CollectionItem
     }
 
     /**
-     * @return mixed
-     *
-     * @var CompiledHtml
+     * @return CompiledData
      */
-    public function getCompiledHtml()
+    public function getCompiledData()
     {
-        return $this->compiledHtml ?? $this->compiledHtml = new CompiledHtml();
+        return $this->compiledData ?? $this->compiledData = new CompiledData();
     }
 
-    /**
-     * @param mixed $compiledHtml
-     */
-    public function setCompiledHtml(CompiledHtml $compiledHtml): CollectionItem
+    public function setCompiledData(CompiledData $compiledData): self
     {
-        $this->compiledHtml = $compiledHtml;
-
-        return $this;
-    }
-
-    public function getCompiledScripts(): CompiledScripts
-    {
-        return $this->compiledScripts ?? $this->compiledScripts = new CompiledScripts();
-    }
-
-    /**
-     * @param mixed $compiledScripts
-     */
-    public function setCompiledScripts(CompiledScripts $compiledScripts): CollectionItem
-    {
-        $this->compiledScripts = $compiledScripts;
-
-        return $this;
-    }
-
-    /**
-     * @return CompiledStyles
-     */
-    public function getCompiledStyles()
-    {
-        return $this->compiledStyles ?? $this->compiledStyles = new CompiledStyles();
-    }
-
-    public function setCompiledStyles(CompiledStyles $compiledStyles): CollectionItem
-    {
-        $this->compiledStyles = $compiledStyles;
+        $this->compiledData = $compiledData;
 
         return $this;
     }

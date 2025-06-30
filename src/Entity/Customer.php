@@ -19,7 +19,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-
+use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledData;
 /**
  * @ORM\Entity(repositoryClass=CustomerRepository::class, readOnly=true)
  */
@@ -149,36 +149,17 @@ class Customer
     private $pageData;
 
     /**
-     * @ORM\OneToOne(targetEntity=CompiledHtml::class, cascade={"persist", "remove"}, fetch="LAZY")
-     * @ORM\JoinColumn(nullable=true, referencedColumnName="id", onDelete="SET NULL")
+     * @var CompiledData
      *
-     * @Gedmo\Versioned
-     */
-    private $compiledHtml;
-
-    /**
-     * @var CompiledScripts
-     *
-     * @ORM\OneToOne(targetEntity=CompiledScripts::class, cascade={"persist", "remove"}, fetch="LAZY")
+     * @ORM\OneToOne(targetEntity=CompiledData::class, cascade={"persist", "remove"}, fetch="LAZY")
      * @ORM\JoinColumn(nullable=true, referencedColumnName="id", onDelete="SET NULL")
      */
-    private $compiledScripts;
-
-    /**
-     * @var CompiledStyles
-     *
-     * @ORM\OneToOne(targetEntity=CompiledStyles::class, cascade={"persist", "remove"}, fetch="LAZY")
-     * @ORM\JoinColumn(nullable=true, referencedColumnName="id", onDelete="SET NULL")
-     */
-    private $compiledStyles;
+    private $compiledData;
 
     public function __construct()
     {
         $this->customerGroups = new ArrayCollection();
         $this->pageData = new PageData();
-        $this->compiledScripts = new CompiledScripts();
-        $this->compiledStyles = new CompiledStyles();
-        $this->compiledHtml = new CompiledHtml();
     }
 
     public function getPasswordConfirm(): ?string
@@ -401,51 +382,16 @@ class Customer
     }
 
     /**
-     * @return mixed
-     *
-     * @var CompiledHtml
+     * @return CompiledData
      */
-    public function getCompiledHtml()
+    public function getCompiledData()
     {
-        return $this->compiledHtml ?? $this->compiledHtml = new CompiledHtml();
+        return $this->compiledData ?? $this->compiledData = new CompiledData();
     }
 
-    /**
-     * @param mixed $compiledHtml
-     */
-    public function setCompiledHtml(CompiledHtml $compiledHtml): self
+    public function setCompiledData(CompiledData $compiledData): self
     {
-        $this->compiledHtml = $compiledHtml ?? new CompiledHtml();
-
-        return $this;
-    }
-
-    public function getCompiledScripts(): CompiledScripts
-    {
-        return $this->compiledScripts ?? $this->compiledScripts = new CompiledScripts();
-    }
-
-    /**
-     * @param mixed $compiledScripts
-     */
-    public function setCompiledScripts(CompiledScripts $compiledScripts): self
-    {
-        $this->compiledScripts = $compiledScripts;
-
-        return $this;
-    }
-
-    /**
-     * @return CompiledStyles
-     */
-    public function getCompiledStyles()
-    {
-        return $this->compiledStyles ?? $this->compiledStyles = new CompiledStyles();
-    }
-
-    public function setCompiledStyles(CompiledStyles $compiledStyles): self
-    {
-        $this->compiledStyles = $compiledStyles;
+        $this->compiledData = $compiledData;
 
         return $this;
     }
