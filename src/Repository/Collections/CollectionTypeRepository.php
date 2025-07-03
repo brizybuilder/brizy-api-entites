@@ -14,4 +14,28 @@ use Doctrine\ORM\EntityRepository;
  * @method CollectionType[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class CollectionTypeRepository extends EntityRepository {
+
+    /**
+     * Find collection types with their fields sorted by field priority.
+     *
+     * @param array $criteria
+     * @return CollectionType[]
+     */
+    public function findByAndSortFields(array $criteria = []): array
+    {
+        $qb = $this->createQueryBuilder('ct')
+            ->leftJoin('ct.fields', 'f')
+            ->addSelect('f')
+            ->orderBy('ct.priority', 'DESC')
+            ->addOrderBy('ct.id', 'DESC')
+            ->addOrderBy('f.priority', 'DESC')
+            ->addOrderBy('f.id', 'DESC');
+
+        foreach ($criteria as $field => $value) {
+            $qb->andWhere("ct.$field = :$field")
+                ->setParameter($field, $value);
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }
