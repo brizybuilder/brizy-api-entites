@@ -17,7 +17,7 @@ trait SEOTrait
 
     public function getSeo(): array
     {
-        return $this->seo ?? [];
+        return json_decode($this->seo, true) ?? [];
     }
 
     public function setSeo(array $seo): self

@@ -15,7 +15,7 @@ trait CodeInjectionPropertyTrait
 
     public function getCodeInjection()
     {
-        return json_decode($this->codeInjection);
+        return json_decode($this->codeInjection ?? '[]', true) ?? [];
     }
 
     public function setCodeInjection(array $codeInjection): self

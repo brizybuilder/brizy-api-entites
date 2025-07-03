@@ -15,7 +15,7 @@ trait SettingsTrait
 
     public function getSettings(): array
     {
-        return json_decode($this->settings) ?: [];
+        return json_decode($this->settings, true) ?: [];
     }
 
     public function setSettings(array $settings = []): self

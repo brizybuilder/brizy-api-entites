@@ -17,7 +17,7 @@ trait SocialTrait
 
     public function getSocial(): array
     {
-        return json_decode($this->social) ?? [];
+        return json_decode($this->social, true) ?? [];
     }
 
     public function setSocial(array $social): self
