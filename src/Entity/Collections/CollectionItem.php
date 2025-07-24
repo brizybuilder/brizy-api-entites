@@ -22,9 +22,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\PageData;
-use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledStyles;
-use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledHtml;
-use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledScripts;
 /**
  * @ORM\Entity(repositoryClass="Brizy\Bundle\ApiEntitiesBundle\Repository\Collections\CollectionItemRepository", readOnly=true)
  */
