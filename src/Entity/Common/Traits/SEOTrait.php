@@ -11,13 +11,13 @@ use Doctrine\ORM\Mapping as ORM;
 trait SEOTrait
 {
     /**
-     * @ORM\Column(type="json", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $seo = [];
 
     public function getSeo(): array
     {
-        return $this->seo ?? [];
+        return json_decode($this->seo, true) ?? [];
     }
 
     public function setSeo(array $seo): self

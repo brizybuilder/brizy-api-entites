@@ -186,7 +186,7 @@ class CollectionType
 
     public function getSettings(): array
     {
-        $settings = $this->settings ?: [];
+        $settings = json_decode($this->settings, true) ?: [];
 
         /*
          * Must be nonNull

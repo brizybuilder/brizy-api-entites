@@ -9,13 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
 trait CodeInjectionPropertyTrait
 {
     /**
-     * @ORM\Column(type="json", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $codeInjection = '';
 
     public function getCodeInjection()
     {
-        return json_decode($this->codeInjection);
+        return json_decode($this->codeInjection ?? '[]', true) ?? [];
     }
 
     public function setCodeInjection(array $codeInjection): self

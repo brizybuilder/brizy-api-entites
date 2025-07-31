@@ -8,6 +8,7 @@ use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\IdTrait;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\ProjectTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Brizy\Bundle\ApiEntitiesBundle\Repository\CompiledDataRepository;
+
 /**
  * @ORM\Entity(repositoryClass=CompiledDataRepository::class, readOnly=true)
  */
@@ -19,55 +20,21 @@ class CompiledData
     /**
      * @ORM\Column(type="text", options={"collation"="utf8mb4_general_ci"})
      */
-    private $html = '';
-
-    /**
-     * @ORM\Column(type="text", options={"collation"="utf8mb4_general_ci"})
-     */
-    private $styles = '';
-
-    /**
-     * @ORM\Column(type="text", options={"collation"="utf8mb4_general_ci"})
-     */
-    private $scripts = '';
+    private $data = '';
 
     /**
      * @ORM\Column(type="integer")
      */
     private $ttl;
 
-    public function getHtml(): string
+    public function getData(): string
     {
-        return $this->html;
+        return $this->data;
     }
 
-    public function setHtml(string $html): CompiledData
+    public function setData(string $data): CompiledData
     {
-        $this->html = $html;
-
-        return $this;
-    }
-
-    public function getStyles(): string
-    {
-        return $this->styles;
-    }
-
-    public function setStyles(string $styles): CompiledData
-    {
-        $this->styles = $styles;
-
-        return $this;
-    }
-
-    public function getScripts(): string
-    {
-        return $this->scripts;
-    }
-
-    public function setScripts(string $scripts): CompiledData
-    {
-        $this->scripts = $scripts;
+        $this->data = $data;
 
         return $this;
     }
@@ -82,5 +49,16 @@ class CompiledData
         $this->ttl = $ttl;
 
         return $this;
+    }
+
+    /**
+     * Set TTL to 90 days from now before persisting
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     */
+    public function updateTtl(): void
+    {
+        $this->ttl = time() + 7776000;  // 3 * 30 * 24 * 60 * 60
     }
 }

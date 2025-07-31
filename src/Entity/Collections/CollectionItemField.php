@@ -103,7 +103,7 @@ class CollectionItemField
 
     public function getValues(): array
     {
-        return json_decode($this->values) ?: [];
+        return json_decode($this->values, true) ?: [];
     }
 
     public function setValues(array $values = []): self
