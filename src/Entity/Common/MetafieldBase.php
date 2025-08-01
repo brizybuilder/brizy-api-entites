@@ -59,7 +59,7 @@ abstract class MetafieldBase implements MetaFieldTypeInterface
      *
      * @return $this
      */
-    public function setEntityId(int $entity_id): self
+    public function setEntityId(int $entity_id): MetaFieldTypeInterface
     {
         $this->entity_id = $entity_id;
 
