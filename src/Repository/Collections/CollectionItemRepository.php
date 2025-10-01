@@ -19,7 +19,7 @@ class CollectionItemRepository extends EntityRepository {
      * @param array $criteria
      * @return int
      */
-    public function count(array $criteria = []): int
+    public function getCountByCriteria(array $criteria = []): int
     {
         $qb = $this->createQueryBuilder('ci')
             ->select('COUNT(ci.id)');
