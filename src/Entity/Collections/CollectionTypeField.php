@@ -42,13 +42,6 @@ class CollectionTypeField
     public const UNIQUE_DEFAULT_VALUE = false;
 
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    protected $id;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionType", inversedBy="fields")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      *
@@ -101,11 +94,6 @@ class CollectionTypeField
      * @ORM\Column(type="string", length=30, nullable=false, options={"default": CollectionConst::FIELD_DEFAULT_PLACEMENT})
      */
     protected $placement = CollectionConst::FIELD_DEFAULT_PLACEMENT;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    protected $settings = '';
 
     /**
      * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionType")

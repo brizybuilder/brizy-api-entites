@@ -25,11 +25,6 @@ class Template
     use CreatedAtTrait;
 
     /**
-     * @ORM\Column(type="string", length=120, nullable=false)
-     */
-    protected $title;
-
-    /**
      * @ORM\Column(name="data", type="text", nullable=false)
      */
     private $data = '{}';

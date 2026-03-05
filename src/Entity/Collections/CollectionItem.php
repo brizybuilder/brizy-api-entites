@@ -42,13 +42,6 @@ class CollectionItem
     public const SEO_DEFAULT_ENABLE_INDEXING = true;
 
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    protected $id;
-
-    /**
      * @ORM\Column(type="string", length=120, nullable=false)
       */
     protected $title = '';

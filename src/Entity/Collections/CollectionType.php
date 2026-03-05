@@ -29,19 +29,6 @@ class CollectionType
     public const SHOW_IN_MENU_DEFAULT_VALUE = true;
 
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    protected $id;
-
-    /**
-     * @var string
-     * @ORM\Column(type="string", length=120, nullable=false)
-     */
-    protected $title;
-
-    /**
      * @var string
      * @ORM\Column(type="string", nullable=false)
      */
@@ -69,11 +56,6 @@ class CollectionType
      * )
      */
     protected $fields;
-
-    /**
-     * @ORM\Column(type="json", nullable=true)
-     */
-    protected $settings = [];
 
     /**
      * @var Collection

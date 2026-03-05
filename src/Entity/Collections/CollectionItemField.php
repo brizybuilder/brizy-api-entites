@@ -20,13 +20,6 @@ class CollectionItemField
     use CommonTraits\ProjectTrait;
 
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    protected $id;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionItem", inversedBy="fields")
      * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      */
