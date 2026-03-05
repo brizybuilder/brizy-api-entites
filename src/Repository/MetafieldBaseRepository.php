@@ -13,5 +13,6 @@ use Doctrine\ORM\EntityRepository;
  * @method MetafieldBase[]    findAll()
  * @method MetafieldBase[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MetafieldBaseRepository extends EntityRepository {
+class MetafieldBaseRepository extends EntityRepository
+{
 }

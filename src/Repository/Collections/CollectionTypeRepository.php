@@ -13,8 +13,8 @@ use Doctrine\ORM\EntityRepository;
  * @method CollectionType[]    findAll()
  * @method CollectionType[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CollectionTypeRepository extends EntityRepository {
-
+class CollectionTypeRepository extends EntityRepository
+{
     /**
      * Find collection types with their fields sorted by field priority.
      *

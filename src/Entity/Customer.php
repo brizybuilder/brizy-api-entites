@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity;
 
-
 use Brizy\Bundle\ApiEntitiesBundle\Constants\CustomerConst;
 use Brizy\Bundle\ApiEntitiesBundle\Repository\CustomerRepository;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\CodeInjectionPropertyTrait;
@@ -20,6 +19,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\CompiledData;
+
 /**
  * @ORM\Entity(repositoryClass=CustomerRepository::class, readOnly=true)
  */

@@ -6,7 +6,7 @@ namespace Brizy\Bundle\ApiEntitiesBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class CompiledDataRepository extends EntityRepository
+class CompiledHtmlRepository extends EntityRepository
 {
     public function iterateAndReplaceByParents($parentIds, callable $callback): void
     {

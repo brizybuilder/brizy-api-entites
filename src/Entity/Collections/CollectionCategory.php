@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity\Collections;
 
-
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits as CommonTraits;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Index;

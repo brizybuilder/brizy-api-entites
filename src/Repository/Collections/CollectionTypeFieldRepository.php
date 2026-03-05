@@ -13,5 +13,6 @@ use Doctrine\ORM\EntityRepository;
  * @method CollectionTypeField[]    findAll()
  * @method CollectionTypeField[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CollectionTypeFieldRepository extends EntityRepository {
+class CollectionTypeFieldRepository extends EntityRepository
+{
 }

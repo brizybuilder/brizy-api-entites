@@ -27,9 +27,9 @@ class Random
         // Last resort: mt_rand
         if (empty($randomData)) { // Get 108 bytes of (pseudo-random, insecure) data
             $randomData = mt_rand().mt_rand().mt_rand().uniqid(mt_rand(), true).microtime(true).uniqid(
-                    mt_rand(),
-                    true
-                );
+                mt_rand(),
+                true
+            );
         }
 
         return rtrim(strtr(base64_encode(hash('sha256', $randomData)), '+/', '-_'), '=');

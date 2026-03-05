@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity\Collections;
 
-
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits as CommonTraits;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -41,9 +40,9 @@ class CollectionItemField
 
     /**
      * // name="`values`" because of conflict with "INSERT ... VALUES ..." // https://stackoverflow.com/a/11278568
-     * @ORM\Column(name="`values`", type="text", nullable=true)
+     * @ORM\Column(name="`values`", type="json", nullable=true)
      */
-    protected $values = '';
+    protected $values = [];
 
     /**
      * @ORM\ManyToOne(targetEntity="Brizy\Bundle\ApiEntitiesBundle\Entity\Collections\CollectionItem")
@@ -103,12 +102,12 @@ class CollectionItemField
 
     public function getValues(): array
     {
-        return json_decode($this->values, true) ?: [];
+        return $this->values ?: [];
     }
 
-    public function setValues(array $values = []): self
+    public function setValues(?array $values = []): self
     {
-        $this->values = json_encode($values);
+        $this->values = $values;
 
         return $this;
     }

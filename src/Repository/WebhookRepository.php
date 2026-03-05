@@ -6,6 +6,6 @@ namespace Brizy\Bundle\ApiEntitiesBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class CustomerGroupRepository extends EntityRepository
+class WebhookRepository extends EntityRepository
 {
 }

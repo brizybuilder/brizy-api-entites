@@ -9,18 +9,18 @@ use Doctrine\ORM\Mapping as ORM;
 trait SettingsTrait
 {
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="json", nullable=true)
      */
-    protected $settings = '';
+    protected $settings = [];
 
     public function getSettings(): array
     {
-        return json_decode($this->settings, true) ?: [];
+        return $this->settings ?: [];
     }
 
-    public function setSettings(array $settings = []): self
+    public function setSettings(?array $settings = []): self
     {
-        $this->settings = json_encode($settings);
+        $this->settings = $settings;
 
         return $this;
     }

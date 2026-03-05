@@ -22,6 +22,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Brizy\Bundle\ApiEntitiesBundle\Entity\PageData;
+
 /**
  * @ORM\Entity(repositoryClass="Brizy\Bundle\ApiEntitiesBundle\Repository\Collections\CollectionItemRepository", readOnly=true)
  */
@@ -98,7 +99,7 @@ class CollectionItem
      * @ORM\OneToOne(targetEntity=CompiledData::class, cascade={"persist", "remove"}, fetch="LAZY")
      * @ORM\JoinColumn(nullable=true, referencedColumnName="id", onDelete="SET NULL")
      */
-    private  $compiledData;
+    private $compiledData;
 
     /**
      * @ORM\Column(type="boolean", options={"default":0})
@@ -115,12 +116,21 @@ class CollectionItem
      */
     private $itemPassword;
 
+    /**
+     * @ORM\Column(type="string", length=512, nullable=true)
+     */
+    private $permalink = null;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=false, options={"default":false})
+     */
+    private $customPermalink = false;
+
     public function __construct()
     {
         $this->createdAt = new DateTime();
         $this->fields = new ArrayCollection();
         $this->status = CollectionConst::ITEM_DEFAULT_STATUS;
-        $this->pageData = new PageData();
     }
 
     public function getStatus(): ?string
@@ -215,7 +225,7 @@ class CollectionItem
 
     public function getPageData(): ?PageData
     {
-        return $this->pageData;
+        return $this->pageData ?? $this->pageData = new PageData();
     }
 
     public function setPageData(PageData $pageData): self
@@ -269,9 +279,33 @@ class CollectionItem
         return $this->compiledData ?? $this->compiledData = new CompiledData();
     }
 
-    public function setCompiledData(CompiledData $compiledData): self
+    public function setCompiledData(CompiledData $compiledData): CollectionItem
     {
         $this->compiledData = $compiledData;
+
+        return $this;
+    }
+
+    public function getPermalink(): ?string
+    {
+        return $this->permalink;
+    }
+
+    public function setPermalink(?string $permalink): self
+    {
+        $this->permalink = $permalink;
+
+        return $this;
+    }
+
+    public function isCustomPermalink(): bool
+    {
+        return $this->customPermalink;
+    }
+
+    public function setCustomPermalink(bool $customPermalink): CollectionItem
+    {
+        $this->customPermalink = $customPermalink;
 
         return $this;
     }

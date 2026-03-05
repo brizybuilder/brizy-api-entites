@@ -6,5 +6,6 @@ namespace Brizy\Bundle\ApiEntitiesBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class PageDataRepository extends EntityRepository {
+class PageDataRepository extends EntityRepository
+{
 }

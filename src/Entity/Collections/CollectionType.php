@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity\Collections;
 
-
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits as CommonTraits;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -24,6 +23,7 @@ class CollectionType
     use CommonTraits\TitleTrait;
     use CommonTraits\SettingsTrait;
 
+    public const DEFAULT_PERMALINK_PATTERN = '/{collectionType.slug}/{slug}';
     public const PUBLIC_DEFAULT_VALUE = true;
     public const SHOW_UI_DEFAULT_VALUE = true;
     public const SHOW_IN_MENU_DEFAULT_VALUE = true;
@@ -71,9 +71,9 @@ class CollectionType
     protected $fields;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="json", nullable=true)
      */
-    protected $settings = '';
+    protected $settings = [];
 
     /**
      * @var Collection
@@ -92,17 +92,22 @@ class CollectionType
     /**
      * @ORM\Column(type="boolean", nullable=false, options={"default":CollectionType::PUBLIC_DEFAULT_VALUE})
      */
-    private  $public = self::PUBLIC_DEFAULT_VALUE;
+    private $public = self::PUBLIC_DEFAULT_VALUE;
 
     /**
      * @ORM\Column(type="boolean", nullable=false, options={"default":CollectionType::PUBLIC_DEFAULT_VALUE})
      */
-    private  $showUI = self::SHOW_UI_DEFAULT_VALUE;
+    private $showUI = self::SHOW_UI_DEFAULT_VALUE;
 
     /**
      * @ORM\Column(type="boolean", nullable=false, options={"default":CollectionType::PUBLIC_DEFAULT_VALUE})
      */
-    private  $showInMenu = self::SHOW_IN_MENU_DEFAULT_VALUE;
+    private $showInMenu = self::SHOW_IN_MENU_DEFAULT_VALUE;
+
+    /**
+     * @ORM\Column(type="string", length=512, nullable=true)
+     */
+    private $permalinkPattern = self::DEFAULT_PERMALINK_PATTERN;
 
     /**
      * CollectionType constructor.
@@ -111,7 +116,6 @@ class CollectionType
     {
         $this->createdAt = new DateTime();
         $this->fields = new ArrayCollection();
-        $this->templates = new ArrayCollection();
     }
 
     public function getSlug(): ?string
@@ -186,7 +190,7 @@ class CollectionType
 
     public function getSettings(): array
     {
-        $settings = json_decode($this->settings, true) ?: [];
+        $settings = $this->settings ?: [];
 
         /*
          * Must be nonNull
@@ -241,6 +245,18 @@ class CollectionType
     public function setShowInMenu(bool $showInMenu): self
     {
         $this->showInMenu = $showInMenu;
+
+        return $this;
+    }
+
+    public function getPermalinkPattern(): ?string
+    {
+        return $this->permalinkPattern;
+    }
+
+    public function setPermalinkPattern(?string $permalinkPattern): self
+    {
+        $this->permalinkPattern = $permalinkPattern;
 
         return $this;
     }

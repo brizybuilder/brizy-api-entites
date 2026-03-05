@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity;
 
-
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\IdTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Brizy\Bundle\ApiEntitiesBundle\Repository\MetafieldRepository;
+
 /**
  * @ORM\Table(name="metafield", uniqueConstraints={@UniqueConstraint(columns={"node_id","name"})})
  * @ORM\Entity(repositoryClass=MetafieldRepository::class, readOnly=true)

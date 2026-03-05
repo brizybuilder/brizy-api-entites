@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Brizy\Bundle\ApiEntitiesBundle\Repository\Common;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\Query\Parameter;
 use Doctrine\ORM\QueryBuilder;
 
 trait SlugAbleEntity
@@ -21,7 +23,10 @@ trait SlugAbleEntity
         $qb->select("s.{$slugProperty}")
            ->where($qb->expr()->like("s.{$slugProperty}", ':slug'))
            ->andWhere("s.{$groupProperty}=:group")
-           ->setParameters(['slug' => "{$slugString}%", 'group' => $groupId]);
+           ->setParameters(new ArrayCollection([
+               new Parameter('slug', "{$slugString}%"),
+               new Parameter('group', $groupId),
+           ]));
 
         if ($excludeId) {
             $qb->andWhere('s.id <> :id')

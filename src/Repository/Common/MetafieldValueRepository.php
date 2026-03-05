@@ -60,7 +60,9 @@ abstract class MetafieldValueRepository extends EntityRepository
         $tableName = $this->_em->getClassMetadata($this->getClassName())->getTableName();
 
         $sourceMetaFields = $this->getFields($sourceProjectId, $excludeNames);
-        $targetMetaFieldIds = array_map(function ($field) { return $field['metafield']['id']; }, $this->getFields($targetProjectId, $excludeNames));
+        $targetMetaFieldIds = array_map(function ($field) {
+            return $field['metafield']['id'];
+        }, $this->getFields($targetProjectId, $excludeNames));
 
         $connection = $this->_em->getConnection();
 

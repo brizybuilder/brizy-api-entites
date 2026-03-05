@@ -13,7 +13,6 @@ use Doctrine\ORM\EntityRepository;
  * @method CollectionEditor[]    findAll()
  * @method CollectionEditor[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CollectionEditorRepository  extends EntityRepository
+class CollectionEditorRepository extends EntityRepository
 {
-
 }

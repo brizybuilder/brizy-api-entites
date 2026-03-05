@@ -11,6 +11,7 @@ use Brizy\Bundle\ApiEntitiesBundle\Repository\CompiledDataRepository;
 
 /**
  * @ORM\Entity(repositoryClass=CompiledDataRepository::class, readOnly=true)
+ * @ORM\HasLifecycleCallbacks()
  */
 class CompiledData
 {

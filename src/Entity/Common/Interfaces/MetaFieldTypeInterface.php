@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Interfaces;
 
-
 use Brizy\Bundle\ApiEntitiesBundle\Entity\Metafield;
 
 interface MetaFieldTypeInterface

@@ -9,6 +9,7 @@ use Brizy\Bundle\ApiEntitiesBundle\Entity\Common\Traits\IdTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 use Brizy\Bundle\ApiEntitiesBundle\Repository\MetafieldIntRepository;
+
 /**
  * @ORM\Table(name="metafield__int", uniqueConstraints={@UniqueConstraint(columns={"entity_id","metafield_id"})})
  * @ORM\Entity(repositoryClass=MetafieldIntRepository::class, readOnly=true)

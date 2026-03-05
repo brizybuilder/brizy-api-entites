@@ -41,7 +41,9 @@ final class BrizyApiEntitiesBundle extends Bundle
                 $managerParameters,
                 false,
                 $aliasMap
-            ), \Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_BEFORE_OPTIMIZATION, 0
+            ),
+            \Symfony\Component\DependencyInjection\Compiler\PassConfig::TYPE_BEFORE_OPTIMIZATION,
+            0
         );
     }
 }
