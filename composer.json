@@ -1,5 +1,5 @@
 {
-  "name": "bagrinsergiu/brizy-api-entities",
+  "name": "brizybuilder/brizy-api-entities",
   "type": "symfony-bundle",
   "require": {
     "php": ">=7.2|8.*",
